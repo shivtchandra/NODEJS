@@ -48,5 +48,28 @@ app.get('/single-blog',(req,res)=>{
 });
 
 
+app.get('/about',(re,res)=>{
+    res.render(
+        about,
+        { title:'About' }
+    )
+})
+
+app.get('/blogs',(req,res)=>{
+    Blog.find()
+    .then((result)=>{
+        res.render('index',{title : 'Blogs',blogs: result})
+    })
+})
+
+app.get('/create',(req,res)=>{
+    res.render('create',{title:'create blog'})
+})
+
+app.get('/',(req,res)=>{
+    res.redirect('/blogs')
+});
+
+
 
 
